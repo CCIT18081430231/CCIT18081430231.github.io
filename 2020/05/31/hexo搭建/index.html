@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="title:搭建Hexo 博客对于很多新手来说都是一个很复杂的东西，很多人搞了半天都没有注册完毕，接下来我对win10系统怎样搭建hexo搭建做个解析，可以帮助刚使用博客的新手来更好的了解博客。  Hexo简介Hexo是一款基于Node.js的静态博客框架，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。大家可以进入hexo官网进行详细的查看，这个可选择中文查看。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo搭建">
+<meta property="og:url" content="http://example.com/2020/05/31/hexo%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="CJF&#39;s blog">
+<meta property="og:description" content="title:搭建Hexo 博客对于很多新手来说都是一个很复杂的东西，很多人搞了半天都没有注册完毕，接下来我对win10系统怎样搭建hexo搭建做个解析，可以帮助刚使用博客的新手来更好的了解博客。  Hexo简介Hexo是一款基于Node.js的静态博客框架，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。大家可以进入hexo官网进行详细的查看，这个可选择中文查看。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/QQ%E6%88%AA%E5%9B%BE20200321211905.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/QQ%E6%88%AA%E5%9B%BE20200322114635.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200327175115.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//timg.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200327184951.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200327184951.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200327195413.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200327202538.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//7a0fb1a640d490f234de14c9e5d89732.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//27280d3065df3750e8f259d27eab2702.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//156515.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328122354.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328122854.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//4582592345.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328163742.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328173631.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328180736.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328181045.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328184826.png">
+<meta property="article:published_time" content="2020-05-31T07:34:07.000Z">
+<meta property="article:modified_time" content="2020-09-19T07:34:54.827Z">
+<meta property="article:author" content="CJF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/QQ%E6%88%AA%E5%9B%BE20200321211905.png">
+
+<link rel="canonical" href="http://example.com/2020/05/31/hexo%E6%90%AD%E5%BB%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>hexo搭建 | CJF's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="CJF's blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CJF's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/05/31/hexo%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CJF">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CJF's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          hexo搭建
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-31 15:34:07" itemprop="dateCreated datePublished" datetime="2020-05-31T15:34:07+08:00">2020-05-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-19 15:34:54" itemprop="dateModified" datetime="2020-09-19T15:34:54+08:00">2020-09-19</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="title-搭建Hexo"><a href="#title-搭建Hexo" class="headerlink" title="title:搭建Hexo"></a>title:搭建Hexo</h2><blockquote>
+<p>博客对于很多新手来说都是一个很复杂的东西，很多人搞了半天都没有注册完毕，接下来我对win10系统怎样搭建hexo搭建做个解析，可以帮助刚使用博客的新手来更好的了解博客。</p>
+</blockquote>
+<h3 id="Hexo简介"><a href="#Hexo简介" class="headerlink" title="Hexo简介"></a>Hexo简介</h3><p>Hexo是一款基于Node.js的静态博客框架，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。大家可以进入<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">hexo官网</a>进行详细的查看，这个可选择中文查看。</p>
+<h3 id="搭建流程简绍："><a href="#搭建流程简绍：" class="headerlink" title="#搭建流程简绍："></a>#搭建流程简绍：</h3><h3 id="Step-1：安装Git"><a href="#Step-1：安装Git" class="headerlink" title="#Step 1：安装Git"></a>#Step 1：安装Git</h3><hr>
+<p><strong>1.下载</strong></p>
+<p>点击<a target="_blank" rel="noopener" href="https://git-scm.com/download/win">Git官网</a>下载对应的版本，win10一般是64位。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/QQ%E6%88%AA%E5%9B%BE20200321211905.png" alt="img"></p>
+<p><strong>2.安装</strong></p>
+<p>在安装过程中一路next</p>
+<p><strong>3.检查git是否安装成功</strong></p>
+<p>在CMD窗口（R+win输入cmd即可打开CMD窗口)输入指令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git</span><br></pre></td></tr></table></figure>
+
+<p>等待。</p>
+<p>到这里git就安装好了，这时会有一个Git Bash的命令工具（鼠标右击就会出现）。</p>
+<h3 id="Step-2：下载配置Nodejs"><a href="#Step-2：下载配置Nodejs" class="headerlink" title="#Step 2：下载配置Nodejs"></a>#Step 2：下载配置Nodejs</h3><p><strong>1.下载</strong></p>
+<p>进入<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">nodejs</a>下载，根据自己的电脑选择32位或64位。<br><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/QQ%E6%88%AA%E5%9B%BE20200322114635.png" alt="img"></p>
+<p><strong>2.安装</strong></p>
+<p>在安装过程中一路next即可。</p>
+<p><strong>3.检查是否成功</strong></p>
+<p>在CMD窗口（R+win输入cmd即可打开CMD窗口)输入指令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">| node -v</span><br><span class="line">| npm -v</span><br></pre></td></tr></table></figure>
+
+<p>结果显示如下代表安装成功</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200327175115.png" alt="img"></p>
+<h3 id="Step-3：安装Hexo"><a href="#Step-3：安装Hexo" class="headerlink" title="#Step 3：安装Hexo"></a>#Step 3：安装Hexo</h3><p>前面git和nodejs安装好后，就可以安装hexo博客框架了。</p>
+<p>首先创建一个文件夹，命名为你想要的名字，我的名字是blog，这个文件夹在后续就是用来存放你所创建博客的所有文件。这个文件也称根目录。</p>
+<p><strong>1.安装Hexo</strong></p>
+<p>在这个blog文件夹（你所创建的文件夹）下直接鼠标右键git bash打开，这个时候会有命令窗口弹出。或者（win+r）输入cmd，然后cd到你创建的blog文件夹。</p>
+<p>在窗口中输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>然后等待安装，过程如下，这个过程需要的等待，请耐心。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//timg.jpg" alt="img"></p>
+<p><strong>2.检验是否安装成功</strong></p>
+<p>在窗口中接着输入hexo -v来检验是否安装成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+
+<p>结果显示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200327184951.png" alt="img"></p>
+<p>至此已全部安装完。<br><strong>2.检验是否安装成功</strong></p>
+<p>在窗口中接着输入hexo -v来检验是否安装成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+
+<p>结果显示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200327184951.png" alt="img"></p>
+<p>至此已全部安装完。</p>
+<p><strong>3.初始化网址</strong></p>
+<p>在窗口中接着输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>这个过程可能会比较慢，请耐心等待</p>
+<p>最后结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">added 432 packages in 59.037s</span><br><span class="line">INFO Start blogging with Hexo!</span><br></pre></td></tr></table></figure>
+
+<p>表明初始化已成功。</p>
+<p><strong>4.安装网址所需要的依赖插件</strong></p>
+<p>在窗口中接着输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>完成后，在你的根目录（blog文件夹）下会出现以下文件：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200327195413.png" alt="img"></p>
+<p>在这里解释一下：</p>
+<ul>
+<li>node_modules: 依赖包</li>
+<li>public：存放生成的页面</li>
+<li>scaffolds：生成文章的一些模板</li>
+<li>source：用来存放你的文章</li>
+<li>themes：主题</li>
+<li>_config.yml: 博客的配置文件</li>
+<li>db.json：source解析所得到的</li>
+<li>package.json：项目所需模块项目的配置信息</li>
+</ul>
+<p><strong>5.生成静态网页和开启本地服务</strong></p>
+<p>在窗口中接着输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g&#x2F;&#x2F;生成静态网址</span><br><span class="line">hexo s&#x2F;&#x2F;开启本地服务器</span><br></pre></td></tr></table></figure>
+
+<p>结果显示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200327202538.png" alt="img"></p>
+<p>这就代表启动成功了。</p>
+<p>在浏览器输入网址<a href="https://link.zhihu.com/?target=http://localhost:4000/">http://localhost:4000</a>就可以查看你的本地博客网页了。</p>
+<p>页面如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//7a0fb1a640d490f234de14c9e5d89732.png" alt="img"></p>
+<p>如果想关闭本地服务，Ctrl+C 就可以了 或者关闭这个命令窗口。</p>
+<p>注：每次想浏览你的本地博客都需在你的根目录下鼠标右击打开git bash 在窗口中输入hexo s命令字符。</p>
+<h3 id="Step4：注册Github账号并创建仓库"><a href="#Step4：注册Github账号并创建仓库" class="headerlink" title="#Step4：注册Github账号并创建仓库"></a>#Step4：注册Github账号并创建仓库</h3><p><strong>1.注册github</strong></p>
+<p>首先你要在<a target="_blank" rel="noopener" href="https://github.com/">github</a>上注册一个账号，步骤如下：</p>
+<p>步骤1：填写你的用户名，Email，密码。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//27280d3065df3750e8f259d27eab2702.jpg" alt="img"></p>
+<p>步骤2：进入Step1，填写用户名，Email,密码。后面会有验证，会通过qq邮箱发送给你，进行验证。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//156515.png" alt="img"></p>
+<p>步骤3：进入Step2，选择仓库。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328122354.png" alt="img"></p>
+<p>步骤4：进入Step3，让你做一些选择，完善一些信息。也可以直接跳过步骤，这样你的账号就注册好了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328122854.png" alt="img"></p>
+<p><strong>2.创建仓库</strong></p>
+<p>注册完上面步骤后登录，进行以下创建仓库步骤：</p>
+<p>步骤1：点击new repository新建</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//4582592345.png" alt="img"></p>
+<p>步骤2：创建一个和你用户名相同的仓库，如：你的用户名+.github.io，只有这样，将来要部署到GitHub page的时候，才会被识别,也就是xxxx.github.io其中xxx就是你注册GitHub的用户名。我这里是已经建过了,所以会提示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328163742.png" alt="img"></p>
+<p>这样你的仓库就创建好了。</p>
+<h3 id="Step5-SSH相关配置"><a href="#Step5-SSH相关配置" class="headerlink" title="#Step5.SSH相关配置"></a>#Step5.SSH相关配置</h3><p>因为需要部署到你的github仓库，每次更改都要deploy ，如果不配置ssh key 每次你都需要输入github 账号密码，太过烦琐。</p>
+<p><strong>1.生成SSH</strong></p>
+<p>回到你根目录下的git bash窗口中，输入代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;&#x2F;&#x2F;yourname填写你的github用户名</span><br><span class="line">git config --global user.email &quot;youremail&quot;&#x2F;&#x2F;youremail填写你的github的邮箱</span><br></pre></td></tr></table></figure>
+
+<p>上面的yourname 和 youremail分别指你的github用户名以及github绑定的邮箱。</p>
+<p>可以用以下两条，检查一下你有没有输对：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br></pre></td></tr></table></figure>
+
+<p>然后在执行如下命令生成秘钥和公钥:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br></pre></td></tr></table></figure>
+
+<p>执行了这个命令会提示存储路径和密码以及确认密码，你连续按三次Enter就好</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter file in while to save the key(&#x2F;C&#x2F;Users&#x2F;......)</span><br></pre></td></tr></table></figure>
+
+<p>执行命令时会有上面的代码，这就是你的存储路径，打开id_rsa.pub，将里面所有的内容全部复制出来。</p>
+<p>注:id_rsa是你这台电脑的私人秘钥，不能给别人看的，id_rsa.pub是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328173631.png" alt="img"></p>
+<p><strong>2.添加到github</strong></p>
+<p>到你的github主页点击右上角头像，setting -&gt; SSH and GPG keys，新建SSH key。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328180736.png" alt="img"></p>
+<p>这里的title可以随便填写，我填的是我的用户名。key里面要把你的id_rsa.pub里面的信息复制进去，然后点击Add SSH key</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328181045.png" alt="img"></p>
+<p>这里验证一下是否连接成功，在根目录下的git bash中输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>会有如下提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &#39;github.com (52.74.223.119)&#39; can&#39;t be established.</span><br><span class="line">RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.</span><br><span class="line">Are you sure you want to continue connecting (yes&#x2F;no)?</span><br></pre></td></tr></table></figure>
+
+<p>输入：yes，会有以下提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi yremp2! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+
+<p>这表示配置成功，就可以下一步操作了。</p>
+<h3 id="Step6：将Hexo部署到Github"><a href="#Step6：将Hexo部署到Github" class="headerlink" title="#Step6：将Hexo部署到Github"></a>#Step6：将Hexo部署到Github</h3><p><strong>1.修改配置文件</strong></p>
+<p>这一步是将hexo和Github关联起来，在你的博客根目录（我的是：Blog）下找到 _config.yml， 可以用记事本打开，在最下方找到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:yourname&#x2F;yourname.github.io.git </span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>repo中yourname是你的用户名。也可以如下获取：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ%E6%88%AA%E5%9B%BE20200328184826.png" alt="img"></p>
+<p>注:配置文件里面所有 : 后面都有一个空格，没有会出错</p>
+<p><strong>2.开始部署</strong></p>
+<p>这个时候需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。在根目录下的git bash中输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>然后接着输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>注:输入hexo d时可能有时会跳出窗口要你输入username和password。</p>
+<p>这个时候在你的github仓库中你会发现会出现跟你博客根目录一样的文件，你的根目录上的文件已经部署到你的github仓库上了。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/15/%E8%AF%BB%E5%86%99%E7%89%B9%E6%80%A7/" rel="next" title="读写特性">
+      读写特性 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-%E6%90%AD%E5%BB%BAHexo"><span class="nav-number">1.</span> <span class="nav-text">title:搭建Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">Hexo简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B%E7%AE%80%E7%BB%8D%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">#搭建流程简绍：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-1%EF%BC%9A%E5%AE%89%E8%A3%85Git"><span class="nav-number">1.3.</span> <span class="nav-text">#Step 1：安装Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-2%EF%BC%9A%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AENodejs"><span class="nav-number">1.4.</span> <span class="nav-text">#Step 2：下载配置Nodejs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-3%EF%BC%9A%E5%AE%89%E8%A3%85Hexo"><span class="nav-number">1.5.</span> <span class="nav-text">#Step 3：安装Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step4%EF%BC%9A%E6%B3%A8%E5%86%8CGithub%E8%B4%A6%E5%8F%B7%E5%B9%B6%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="nav-number">1.6.</span> <span class="nav-text">#Step4：注册Github账号并创建仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step5-SSH%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="nav-number">1.7.</span> <span class="nav-text">#Step5.SSH相关配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step6%EF%BC%9A%E5%B0%86Hexo%E9%83%A8%E7%BD%B2%E5%88%B0Github"><span class="nav-number">1.8.</span> <span class="nav-text">#Step6：将Hexo部署到Github</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">CJF</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CJF</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
